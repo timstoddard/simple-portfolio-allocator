@@ -1,3 +1,6 @@
+// TODO why does this error?
+import { calculateMonthlyDepositAmounts } from './src/simple-portfolio-allocator'
+
 const testInvestmentAccounts = [
   {
     name: '',
@@ -29,4 +32,13 @@ const testInvestmentAccounts = [
   },
 ]
 
-calculateMonthlyDepositAmounts(testInvestmentAccounts, 6, 1000)
+test('simple-portfolio-allocator', () => {
+  // assign
+
+  // act
+  calculateMonthlyDepositAmounts(testInvestmentAccounts, 6, 1000)
+
+  // assert
+  // TODO
+  expect(1).toBe(1);
+});

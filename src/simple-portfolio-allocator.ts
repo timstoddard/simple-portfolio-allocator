@@ -1,3 +1,5 @@
+// more advanced version (not by me) https://www.npmjs.com/package/portfolio-allocation
+
 interface InvestmentAccount {
   /** Account name */
   name: string
@@ -20,7 +22,11 @@ interface InvestmentAccount {
 const addNetAccountValues = (sum: number, account: InvestmentAccount) =>
   sum + account.netAccountValue
 
-const calculateDeltaForAccount = (investmentAccount, endingPortfolioValue, allowNegativeDeltas) => {
+const calculateDeltaForAccount = (
+  investmentAccount: InvestmentAccount,
+  endingPortfolioValue: number,
+  allowNegativeDeltas: boolean,
+) => {
   let delta = investmentAccount.input.targetPortfolioPercentage * endingPortfolioValue - investmentAccount.netAccountValue
   if (!allowNegativeDeltas) {
     delta = Math.max(delta, 0)
@@ -36,7 +42,7 @@ const roundDecimalPlaces = (n: number, decimalPlaces = 2) => {
 
 /** Returns an array of the monthly deposit
 amounts needed to reach the target % in the portfolio. */
-const calculateMonthlyDepositAmounts = (
+export const calculateMonthlyDepositAmounts = (
   investmentAccounts: InvestmentAccount[],
   months: number,
   totalToInvestPerMonth: number,
